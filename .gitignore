@@ -312,5 +312,25 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Machine learning data
+data/
+
+# Trained models
+models/
+checkpoints/
+
+# Experiment outputs
+runs/
+outputs/
+
+# Stockfish binaries
+stockfish/
+
+# Misc
+*.pkl
+*.joblib
+*.pt
+*.pth
+
 # End of https://www.toptal.com/developers/gitignore/api/python,windows,jetbrains
 
