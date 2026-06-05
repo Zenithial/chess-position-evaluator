@@ -49,12 +49,12 @@ def test_legal_moves():
 def test_in_check():
     example_fen = "rnbqkbnr/pp2pppp/3p4/1Bp5/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 1 3"
     is_in_check = in_check(example_fen)
-    assert is_in_check == True
+    assert is_in_check == 1
     
 def test_white_to_move():
     example_fen = "rn1qkbnr/pp1bpppp/3p4/1Bp5/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 4"
     is_white_to_move = white_to_move(example_fen)
-    assert is_white_to_move == True
+    assert is_white_to_move == 1
     
 def test_position_string_preprocessing():
     string = "2P4p"

@@ -1,23 +1,4 @@
-import pandas as pd
 import chess
-from sklearn.model_selection import train_test_split
-
-# df = pd.read_csv('data/train.csv')
-
-# str_df = df.to_string()
-
-feature_map = {"material_diff": 0, 
-               "space_diff": 0, 
-               "bishop_pair_diff": 0, 
-               "king_safety_diff": 0, 
-               "development_diff": 0,
-               "legal_moves": 0,
-               "in_check": 0,
-               "white_to_move": 0,
-               "pawn_islands_diff": 0,
-               "doubled_pawns_diff": 0,
-               "passed_pawns_diff": 0
-               }
 
 piece_values = {"p": 100,
                 "P": 100,
@@ -111,10 +92,11 @@ def count_legal_moves(position):
 
 def in_check(position):
     board = chess.Board(position)
-    return board.is_check()
+    return int(board.is_check())
 
 def white_to_move(position):
-    return "w" in position
+    board = chess.Board(position)
+    return int(board.turn == chess.WHITE)
 
 def count_doubled_pawns(position):
     white_doubled_pawns = 0
@@ -209,5 +191,3 @@ def preprocess_position_string(position):
             expanded += board[i]
             
     return expanded
-        
-# print(df)
