@@ -21,7 +21,7 @@ def apply_features(row):
         "material_diff": count_material(fen), 
         "space_diff": space_diff(fen), 
         "bishop_pair_diff": has_bishop_pair(fen), 
-        "king_safety_diff": can_castle(fen), 
+        "king_safety_diff": can_castle(fen),
         "development_diff": development_diff(fen),
         "legal_moves": board.legal_moves.count(),
         "in_check": int(board.is_check()),
