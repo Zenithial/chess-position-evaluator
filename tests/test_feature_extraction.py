@@ -73,15 +73,18 @@ def test_count_isolated_pawns():
     
 def test_number_of_white_passed_pawns():
     example_fen = "r1b1k1nr/4ppbP/P5p1/1PP5/2p5/2N5/3PPP2/R1BQK1NR w KQkq - 0 1"
-    white_passed_pawns = count_passed_pawns(example_fen, chess.WHITE, chess.BLACK)
+    board = chess.Board(example_fen)
+    white_passed_pawns = count_passed_pawns(board, chess.WHITE, chess.BLACK)
     assert white_passed_pawns == 4
     
 def test_number_of_black_passed_pawns():
     example_fen = "k6B/1p5N/3p4/P3p3/p1p1p1p1/6P1/3P2K1/8 w - - 0 1"
-    black_passed_pawns = count_passed_pawns(example_fen, chess.BLACK, chess.WHITE)
+    board = chess.Board(example_fen)
+    black_passed_pawns = count_passed_pawns(board, chess.BLACK, chess.WHITE)
     assert black_passed_pawns == 1
 
 def test_count_passed_pawns_diff():
     example_fen = "r1b1k1nr/p3ppbp/6p1/2P5/2p5/2N5/3PPP2/R1BQK1NR w KQkq - 0 1"
-    passed_pawn_difference = passed_pawn_diff(example_fen)
+    board = chess.Board(example_fen)
+    passed_pawn_difference = passed_pawn_diff(board)
     assert passed_pawn_difference == -1

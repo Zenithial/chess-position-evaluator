@@ -128,13 +128,12 @@ def count_pawn_islands(position):
     white_pawn_island_count = update_pawn_island_count(no_pawn_columns[1], white_pawn_island_count)
     return black_pawn_island_count - white_pawn_island_count
 
-def passed_pawn_diff(position):
-    white_passed_pawn_count = count_passed_pawns(position, chess.WHITE, chess.BLACK)
-    black_passed_pawn_count = count_passed_pawns(position, chess.BLACK, chess.WHITE)
+def passed_pawn_diff(board):
+    white_passed_pawn_count = count_passed_pawns(board, chess.WHITE, chess.BLACK)
+    black_passed_pawn_count = count_passed_pawns(board, chess.BLACK, chess.WHITE)
     return white_passed_pawn_count - black_passed_pawn_count
 
-def count_passed_pawns(position, colour, opposing_colour):
-    board = chess.Board(position)
+def count_passed_pawns(board, colour, opposing_colour):
     passed_pawn_count = 0
     is_passed = True
     for pawn in board.pieces(chess.PAWN, colour):
