@@ -11,7 +11,8 @@ from process_data import (
     development_diff,
     count_doubled_pawns,
     count_pawn_islands,
-    passed_pawn_diff
+    passed_pawn_diff,
+    isolated_pawn_diff
 )
 
 def apply_features(row):
@@ -28,7 +29,8 @@ def apply_features(row):
         "white_to_move": int(board.turn == chess.WHITE),
         "pawn_islands_diff": count_pawn_islands(fen),
         "doubled_pawns_diff": count_doubled_pawns(fen),
-        "passed_pawns_diff": passed_pawn_diff(board)
+        "passed_pawns_diff": passed_pawn_diff(board),
+        "isolated_pawns_diff": isolated_pawn_diff(board)
     }
 
 df = pd.read_csv('data/train.csv')

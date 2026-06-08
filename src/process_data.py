@@ -133,6 +133,13 @@ def passed_pawn_diff(board):
     black_passed_pawn_count = count_passed_pawns(board, chess.BLACK, chess.WHITE)
     return white_passed_pawn_count - black_passed_pawn_count
 
+def isolated_pawn_diff(board):
+    fen = board.fen()
+    no_pawn_columns = find_no_pawn_columns(fen)
+    white_isolated_pawn_count = count_isolated_pawns(board, chess.WHITE, no_pawn_columns[1])
+    black_isolated_pawn_count = count_isolated_pawns(board, chess.BLACK, no_pawn_columns[0])
+    return black_isolated_pawn_count - white_isolated_pawn_count
+
 def count_passed_pawns(board, colour, opposing_colour):
     passed_pawn_count = 0
     is_passed = True
@@ -154,6 +161,21 @@ def count_passed_pawns(board, colour, opposing_colour):
         else:
             is_passed = True
     return passed_pawn_count
+
+def count_isolated_pawns(board, colour, column_contains_pawn):
+    isolated_pawn_count = 0
+    for pawn in board.pieces(chess.PAWN, colour):
+        file = chess.square_file(pawn)
+        if file == 0:
+            if column_contains_pawn[file + 1] == False:
+                isolated_pawn_count += 1
+        elif file == 7:
+            if column_contains_pawn[file - 1] == False:
+                isolated_pawn_count += 1
+        else:
+            if column_contains_pawn[file - 1] == False and column_contains_pawn[file + 1] == False:
+                isolated_pawn_count += 1
+    return isolated_pawn_count
 
 def find_no_pawn_columns(position):
     black_contains_pawn = [False, False, False, False, False, False, False, False]

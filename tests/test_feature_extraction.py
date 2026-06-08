@@ -12,6 +12,7 @@ from src.process_data import preprocess_position_string
 from src.process_data import count_pawn_islands
 from src.process_data import count_passed_pawns
 from src.process_data import passed_pawn_diff
+from src.process_data import isolated_pawn_diff
 
 def test_count_material():
     example_fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" # The start position
@@ -88,3 +89,9 @@ def test_count_passed_pawns_diff():
     board = chess.Board(example_fen)
     passed_pawn_difference = passed_pawn_diff(board)
     assert passed_pawn_difference == -1
+    
+def test_isolated_pawn_diff():
+    example_fen = "rnbqkbnr/1ppppppp/8/P7/8/8/P1PPPPPP/RNBQKBNR b KQkq - 0 2"
+    board = chess.Board(example_fen)
+    isolated_pawn_difference = isolated_pawn_diff(board)
+    assert isolated_pawn_difference == -2
